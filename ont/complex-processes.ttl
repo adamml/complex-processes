@@ -1,0 +1,117 @@
+@prefix cpm: <http://purl.org/voc/cpm#>.
+@prefix om: <http://def.seegrid.csiro.au/isotc211/iso19156/2011/observation#>.
+@prefix proc: <http://www.example.org/ont/complex-processes>.
+@prefix prov: <http://www.w3.org/ns/prov#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
+@prefix sam: <http://def.seegrid.csiro.au/isotc211/iso19156/2011/sampling#>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix vann: <http://purl.org/vocab/vann/>.
+
+proc:ComplexProcess a rdfs:Class;
+	rdfs:label "ComplexProcess"@en;
+	rdfs:comment "The ComplexProcess class "@en;
+	rdfs:subClassOf sam:Process;
+	rdfs:subClassOf om:Process;
+	rdfs:subClassOf prov:Activity.
+
+proc:Instrument a rdfs:Class;
+	rdfs:subClassOf prov:Agent;
+	rdfs:label "The Instrument class describes characteristics of the sensor used to generate an Observation"@en.
+
+proc:Quality a rdfs:Class;
+	rdfs:label "The Quality class retains information about the Process such as Limits of Detection; Uncertainity; Accuracy and Precision"@en.
+
+proc:Algorithm a rdfs:Class;
+	rdfs:subClassOf prov:Entity;
+	rdfs:label "The Algorithm class is used to describe data processing equations and calculations."@en.
+
+proc:ManufacturersCalibration a rdfs:Class;
+	rdfs:subClassOf prov:Activity;
+	rdfs:label "ManufacturersCalibration"@en;
+	rdfs:comment "The ManufacturersCalibration class describes instrument calibrations undertaken by their manufacturer.".
+
+proc:InSituCorrection a rdfs:Class;
+	rdfs:subClassOf prov:Activity;
+	rdfs:label "The InSituCorrection class describes offsets applied to sensor measurements determined after comparison with discrete measurements made on Sampling Specimens."@en.
+
+proc:usedInstrument a rdf:Property;
+	rdfs:label "Assigns an instrument to an Observation Process"@en;
+	rdfs:subPropertyOf prov:wasAssociatedWith;
+	rdfs:domain proc:ComplexProcess;
+	rdfs:range proc:Instrument.
+
+om:Observation rdfs:subClassOf prov:Activity.
+
+om:Process rdfs:subClassOf prov:Activity.
+
+om:procedure rdfs:subPropertyOf prov:wasInformedBy;
+	rdfs:domain om:Observation;
+	rdfs:range om:Process.
+
+sam:Specimen rdfs:subClassOf prov:Entity.
+
+sam:Process rdfs:subClassOf prov:Activity.
+
+sam:processingDetails rdfs:subPropertyOf prov:wasGeneratedBy;
+	rdfs:domain sam:Specimen;
+	rdfs:range sam:Process.
+	
+sam:Measure a rdfs:Class;
+	rdfs:label "Measure"@en.
+
+proc:partialMeasure a rdf:Property;
+	rdfs:label "partialMeasure"@en;
+	rdfs:domain sam:Measure;
+	rdfs:range proc:PartialMeasure.
+	
+proc:PartialMeasure a rdfs:Class;
+	rdfs:label "PartialMeasure"@en;
+	rdfs:comment "The PartialMeasure class is for use where a sam:Specimen samples more than one matrix (such as air and water in pCO2 measurements."@en.
+
+proc:matrix a rdf:Property;
+	rdfs:label "matrix"@en;
+	rdfs:comment "The property matrix links a PartialMeasure to a URL defining the environmental sphere of this PartialMeasure, e.g. atmosphere"@en;
+	rdfs:domain proc:PartialMeasure.
+	
+proc:size a rdf:Property;
+	rdfs:label "size"@en;
+	rdfs:comment "The property size is define how much substance a PartialMeasure represents";
+	rdfs:domain proc:PartialMeasure.
+	
+proc:uom a rdf:Property;
+	rdfs:label "uom"@en;
+	rdfs:comment "The property uom links an instance to a resource defining its units of measure"@en;
+	rdfs:domain proc:PartialMeasure;
+	rdfs:domain proc:Uncertainty;
+	rdfs:range rdfs:Resource.
+	
+cpm:ObservableProperty a rdfs:Class;
+	rdfs:subClassOf skos:Concept;
+	rdf:label "Observable Property"@en.
+	
+proc:uncertainty a rdf:Property;
+	rdfs:subPropertyOf skos:related;
+	rdfs:label "uncertainty"@en;
+	rdfs:comment "Connects an instance of cpm:ObservableProperty to an instance of proc:Uncertainty"@en;
+	rdfs:domain cpm:ObservableProperty;
+	rdfs:range proc:Uncertainty.
+
+proc:Uncertainty a rdfs:Class;
+	rdfs:label "Uncertainty"@en;
+	rdfs:comment "The Uncertainty class is used to give information about the accuracy, resolution, limits of detection etc... of the Result of an Observation associated with an Observable Property"@en;
+	rdfs:subClassOf skos:Concept.
+	
+proc:term a rdf:Property;
+	rdfs:label "term"@en;
+	rdfs:comment "Links a proc:Uncertainty to an rdf:resource (such as a skos:Concept) describing the type of uncertainty recorded (e.g. Accuracy; Limit of Detection)"@en;
+	rdfs:domain proc:Uncertainity;
+	rdfs:range rdfs:Literal.
+	
+proc:value a rdf:Property;
+	rdfs:label "value"@en;
+	rdfs:comment "Links a proc:Uncertainty instance to the value of uncertainty for that instance."@en;
+	rdfs:domain proc:Uncertainty;
+	rdfs:range rdfs:Literal.
+	
+proc:method a rdf:Property.
