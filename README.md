@@ -5,10 +5,8 @@ An ontology and associated examples for describing processes for ISO/OGC Obersva
 The ComplexProcess class
 ### Instrument
 The Instrument class describes characteristics of the sensor used to generate an Observation
-#### In domain of
-
-#### In range of
-
+**In domain of**
+**In range of**
 ### Quality
 The Quality class retains information about the Process such as Limits of Detection; Uncertainity; Accuracy and Precision
 ### Algorithm
