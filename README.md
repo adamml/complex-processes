@@ -2,18 +2,9 @@
 An ontology and associated examples for describing processes for ISO/OGC Obersvation &amp; Measurements and Sampling
 ## Contents
 - [Classes](#classes)
-    - [Algorithm](#algorithm)
-    - [ComplexProcess](#complexprocess)
-    - [InSituCorrection](#insitucorrection)
-    - [Instrument](#instrument)
-    - [ManufacturersCalibration](#manufacturerscalibration)
-    - [PartialMeasure](#partialmeasure)
-    - [Quality](#quality)
+    - [Algorithm](#algorithm) | [ComplexProcess](#complexprocess) | [InSituCorrection](#insitucorrection) | [Instrument](#instrument) | [ManufacturersCalibration](#manufacturerscalibration) | [PartialMeasure](#partialmeasure) | [Quality](#quality)
 - [Properties](#properties)
-    - [matrix](#matrix)
-    - [partialMeasure](#partialmeasure-1)
-    - [usedInstrument](#usedInstrument)
-    - [size](#size)
+    - [matrix](#matrix) | [partialMeasure](#partialmeasure-1) | [usedInstrument](#usedinstrument) | [size](#size)
 - [Namespaces Used](#namespaces-used)
 
 ## Classes
@@ -24,14 +15,16 @@ The ComplexProcess class
 
 **In domain of** [usedInstrument](#usedinstrument)
 
+**Sub-class of** sam:Process | om:Process | prov:Activity
+
 ### InSituCorrection
 The InSituCorrection class describes offsets applied to sensor measurements determined after comparison with discrete measurements made on Sampling Specimens.
 ### Instrument
 The Instrument class describes characteristics of the sensor used to generate an Observation
 
-**In domain of** 
-
 **In range of** [usedInstrument](#usedinstrument)
+
+**Sub-class of** prov:Agent
 
 ### ManufacturersCalibration
 The ManufacturersCalibration class describes instrument calibrations undertaken by their manufacturer.
