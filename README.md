@@ -11,4 +11,8 @@ The Instrument class describes characteristics of the sensor used to generate an
 
 ### Quality
 The Quality class retains information about the Process such as Limits of Detection; Uncertainity; Accuracy and Precision
+### Algorithm
+The Algorithm class is used to describe data processing equations and calculations.
 ## Properties
+## Namespaces Used
+prov: http://www.w3.org/ns/prov#
