@@ -3,7 +3,11 @@ An ontology and associated examples for describing processes for ISO/OGC Obersva
 ## Contents
 - [Classes](#classes)
     - [ComplexProcess](#complexprocess)
-- [Properties](#Properties)
+    - [Instrument](#instrument)
+    - [Quality](#quality)
+    - [Algorithm](#algorithm)
+- [Properties](#properties)
+- [Namespaces Used](#namespaces-used)
 
 ## Classes
 ### ComplexProcess
