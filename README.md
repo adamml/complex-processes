@@ -10,6 +10,9 @@ An ontology and associated examples for describing processes for ISO/OGC Obersva
 ## Classes
 ### Algorithm
 The Algorithm class is used to describe data processing equations and calculations.
+
+**Sub-class of** prov:Entity
+
 ### ComplexProcess
 The ComplexProcess class
 
@@ -19,6 +22,9 @@ The ComplexProcess class
 
 ### InSituCorrection
 The InSituCorrection class describes offsets applied to sensor measurements determined after comparison with discrete measurements made on Sampling Specimens.
+
+**Sub-class of** prov:Activity
+
 ### Instrument
 The Instrument class describes characteristics of the sensor used to generate an Observation
 
@@ -28,6 +34,9 @@ The Instrument class describes characteristics of the sensor used to generate an
 
 ### ManufacturersCalibration
 The ManufacturersCalibration class describes instrument calibrations undertaken by their manufacturer.
+
+**Sub-class of** prov:Activity
+
 ### PartialMeasure
 The PartialMeasure class is for use where a sam:Specimen samples more than one matrix (such as air and water in pCO2 measurements.
 
