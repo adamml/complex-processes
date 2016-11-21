@@ -7,6 +7,8 @@ An ontology and associated examples for describing processes for ISO/OGC Obersva
     - [matrix](#matrix) | [partialMeasure](#partialmeasure-1) | [usedInstrument](#usedinstrument) | [size](#size)
 - [Namespaces Used](#namespaces-used)
 
+![Ontology Class Diagram](./img/Complex Processes.png)
+
 ## Classes
 ### Algorithm
 The Algorithm class is used to describe data processing equations and calculations.
