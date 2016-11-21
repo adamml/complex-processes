@@ -13,6 +13,7 @@ An ontology and associated examples for describing processes for ISO/OGC Obersva
     - [matrix](#matrix)
     - [partialMeasure](#partialmeasure-1)
     - [usedInstrument](#usedInstrument)
+    - [size](#size)
 - [Namespaces Used](#namespaces-used)
 
 ## Classes
@@ -37,7 +38,7 @@ The ManufacturersCalibration class describes instrument calibrations undertaken 
 ### PartialMeasure
 The PartialMeasure class is for use where a sam:Specimen samples more than one matrix (such as air and water in pCO2 measurements.
 
-** In domain of** [matrix](#matrix)
+**In domain of** [matrix](#matrix) | [size](#size)
 
 **In range of** [partialMeasure](#partialmeasure-1)
 
@@ -63,6 +64,11 @@ Assigns an instrument to an Observation Process
 **Range** [Instrument](#instrument)
 
 **Sub-property of** prov:wasAssociatedWith
+
+### size
+The property size is define how much substance a PartialMeasure represents
+
+**Domain** [PartialMeasure](#partialmeasure)
 
 ## Namespaces Used
 prov: http://www.w3.org/ns/prov#
