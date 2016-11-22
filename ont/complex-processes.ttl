@@ -13,7 +13,7 @@ proc:ComplexProcess a rdfs:Class;
 	rdfs:comment "The ComplexProcess class "@en;
 	rdfs:subClassOf sam:Process;
 	rdfs:subClassOf om:Process;
-	rdfs:subClassOf prov:Activity.
+	rdfs:subClassOf prov:Activity. 
 
 proc:Instrument a rdfs:Class;
 	rdfs:subClassOf prov:Agent;
@@ -24,7 +24,8 @@ proc:Quality a rdfs:Class;
 
 proc:Algorithm a rdfs:Class;
 	rdfs:subClassOf prov:Entity;
-	rdfs:label "The Algorithm class is used to describe data processing equations and calculations."@en.
+	rdfs:label "Algorithm"@en;
+	rdfs:comment "The Algorithm class is used to describe data processing equations and calculations."@en.
 
 proc:ManufacturersCalibration a rdfs:Class;
 	rdfs:subClassOf prov:Activity;
@@ -33,13 +34,19 @@ proc:ManufacturersCalibration a rdfs:Class;
 
 proc:InSituCorrection a rdfs:Class;
 	rdfs:subClassOf prov:Activity;
-	rdfs:label "The InSituCorrection class describes offsets applied to sensor measurements determined after comparison with discrete measurements made on Sampling Specimens."@en.
+	rdfs:label "InSituCorrection"@en;
+	rdfs:comment "The InSituCorrection class describes offsets applied to sensor measurements determined after comparison with discrete measurements made on Sampling Specimens."@en.
 
 proc:usedInstrument a rdf:Property;
-	rdfs:label "Assigns an instrument to an Observation Process"@en;
+	rdfs:label "usedInstrument"@en;
+	rdfs:comment "Assigns an instrument to an Observation Process"@en;
 	rdfs:subPropertyOf prov:wasAssociatedWith;
 	rdfs:domain proc:ComplexProcess;
 	rdfs:range proc:Instrument.
+
+proc:StandardOperatingProcedure a rdfs:Class;
+	rdfs:label "StandardOperatingProcedure"@en;
+	rdfs:comment "The class StandardOperatingProcedure is used to contain a chain of ComplexProcesses which are commonly used together."@en.
 
 om:Observation rdfs:subClassOf prov:Activity.
 
@@ -113,5 +120,55 @@ proc:value a rdf:Property;
 	rdfs:comment "Links a proc:Uncertainty instance to the value of uncertainty for that instance."@en;
 	rdfs:domain proc:Uncertainty;
 	rdfs:range rdfs:Literal.
+
+proc:finalStage a rdf:Property;
+	rdfs:label "finalStage"@en;
+	rdfs:comment "The property finalStage is used to connect a StandardOperatingProcedure to the last ComplexProcess used in the chain which makes up the StandardOperatingProcedure. A full chain can be created thus:"@en;
+	rdfs:domain proc:StandardOperatingProcedure;
+	rdfs:range proc:ComplexProcess.
+
+proc:citation a rdf:Property;
+	rdfs:label "citation"@en;
+	rdfs:comment "The citation property is used to connect a ComplexProcess, Algorithm, InSituCorrection or StandardOperatingProcedure to a literature reference describing the process."@en;
+	rdfs:domain proc:ComplexProcess;
+	rdfs:domain proc:Algorithm;
+	rdfs:domain proc:StandardOperatingProcedure;
+	rdfs:domain proc:InSituCorrection;
+	rdfs:range proc:Citation.
 	
-proc:method a rdf:Property.
+proc:responsibleOrganisation a rdf:Property;
+	rdfs:label "responsibleOrganisation"@en;
+	rdfs:comment "The responsibleOrganisation property connects an Algorithm, a ComplexProcess, an InSituCorrection, or a ManufacturersCalibration to the organisation responsible for that process, or part-process"@en;
+	rdfs:domain proc:Algorithm;
+	rdfs:domain proc:InSituCorrection;
+	rdfs:domain proc:ComplexProcess;
+	rdfs:domain proc:ManufacturersCalibration;
+	rdfs:range rdfs:Resource.
+	
+proc:LimitsOfDetection a rdfs:Class;
+	rdfs:label "LimitsOfDetection"@en;
+	rdfs:comment "This is a super-class for describing accuracy, resolution, precision etc..."@en.
+
+proc:RangedLimitsOfDetection a rdfs:Class;
+	rdfs:label "RangedLimitsOfDetection"@en;
+	rdfs:subClassOf proc:LimitsOfDetection.
+
+proc:UnrangedLimitsOfDetection a rdfs:Class;
+	rdfs:label "UnrangedLimitsOfDetection"@en;
+	rdfs:subClassOf proc:LimitsOfDetection.
+
+proc:Accuracy a rdfs:Class;
+	rdfs:subClassOf proc:UnrangedLimitsOfDetection;
+	rdfs:label "Accuracy"@en.
+
+proc:Precision a rdfs:Class;
+	rdfs:subClassOf proc:UnrangedLimitsOfDetection;
+	rdfs:label "Precision"@en.
+	
+proc:Resolution a rdfs:Class;
+	rdfs:subClassOf proc:UnrangedLimitsOfDetection;
+	rdfs:label "Resolution"@en.
+
+proc:OperatingRange a rdfs:Class;
+	rdfs:subClassOf proc:RangedLimitsOfDetection;
+	rdfs:label "OperatingRange"@en.
