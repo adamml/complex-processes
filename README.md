@@ -146,6 +146,7 @@ A full chain can be created thus:
 The UnrangedLimitsOfDetection class is used to describe those limits of detection which have only one value associated with them, such as [Accuracy](#accuracy).
 
 **Sub-class of** [LimitsOfDetection](#limitsofdetection)
+
 ---
 
 ## Properties
