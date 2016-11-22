@@ -2,9 +2,9 @@
 An ontology and associated examples for describing processes for ISO/OGC Obersvation &amp; Measurements and Sampling
 ## Contents
 - [Classes](#classes)
-    - [Accuracy](#accuracy) | [Algorithm](#algorithm) | [ComplexProcess](#complexprocess) | [InSituCorrection](#insitucorrection) | [Instrument](#instrument) | [LimitsOfDetection](#limitsofdetection) | [ManufacturersCalibration](#manufacturerscalibration) | [PartialMeasure](#partialmeasure) | [Quality](#quality) | [StandardOperatingProcedure](#standardoperatingprocedure)
+    + [Accuracy](#accuracy) | [Algorithm](#algorithm) | [Citation](#citation) | [ComplexProcess](#complexprocess) | [InSituCorrection](#insitucorrection) | [Instrument](#instrument) | [LimitsOfDetection](#limitsofdetection) | [ManufacturersCalibration](#manufacturerscalibration) | [Maximum](#maximum) | [Minimum](#minimum) | [OperatingRange](#operatingrange) | [PartialMeasure](#partialmeasure) | [Precision](#precision) | [Quality](#quality) | [RangedLimitsOfDetection](#rangedlimitsofdetection) | [Resolution](#resolution) | [StandardOperatingProcedure](#standardoperatingprocedure) | [UnrangedLimitsOfDetection](#unrangedlimitsofdetection)
 - [Properties](#properties)
-    - [citation](#citation-1) [finalStage](#finalstage) | [matrix](#matrix) | [partialMeasure](#partialmeasure-1) | [size](#size) | [uom](#uom) | [usedInstrument](#usedinstrument)
+    + [citation](#citation-1) [finalStage](#finalstage) | [matrix](#matrix) | [partialMeasure](#partialmeasure-1) | [size](#size) | [uom](#uom) | [usedInstrument](#usedinstrument)
 - [Namespaces Used](#namespaces-used)
 
 An overview of the classes which make up the ontology and how they are connected is illustrated below.
@@ -25,6 +25,9 @@ The Algorithm class is used to describe data processing equations and calculatio
 **In domain of** [citation](#citation-1) | [responsibleOrganisation](#responsibleorganisation)
 
 **Sub-class of** prov:Entity
+
+### Citation
+The Citation class is used to describe the academic literature reference used to define a ComplexProcess, Algorithm, InSituCorrection or StandardOperatingProcedure.
 
 ### ComplexProcess
 The ComplexProcess class
@@ -52,7 +55,7 @@ The Instrument class describes characteristics of the sensor used to generate an
 ### LimitsOfDetection
 This is a super-class for describing accuracy, resolution, precision etc...
 
-LimitsOfDetection has two sub-classes: RangedLimitsOfDetection where a minimum and maximum value are to be applied to the limits and UnrangedLimitsOfDetection where only one value is applied to the limit.
+LimitsOfDetection has two sub-classes: [RangedLimitsOfDetection](#rangedlimitsofdetection) where a minimum and maximum value are to be applied to the limits and UnrangedLimitsOfDetection where only one value is applied to the limit.
 
 The hierarchy of the LimitsOfDetection class and its sub-classes are illustrated below.
 
@@ -65,6 +68,21 @@ The ManufacturersCalibration class describes instrument calibrations undertaken 
 
 **Sub-class of** prov:Activity
 
+### Maximum
+The Maximum class is a sub-class of UnrangedLimitsOfDetection but is used to put the maximum bound on a [RangedLimitsOfDetection](#rangedlimitsofdetection).
+
+**Sub-class of** [UnrangedLimitsOfDetection](#unrangedlimitsofdetection)
+
+### Minimum
+The Minimum class is a sub-class of UnrangedLimitsOfDetection but is used to put the minimum bound on a [RangedLimitsOfDetection](#rangedlimitsofdetection).
+
+**Sub-class of** [UnrangedLimitsOfDetection](#unrangedlimitsofdetection)
+
+### OperatingRange
+OperatingRange
+
+**Sub-class of** [RangedLimitsOfDetection](#rangedlimitsofdetection)
+
 ### PartialMeasure
 The PartialMeasure class is for use where a sam:Specimen samples more than one matrix (such as air and water in pCO2 measurements. The class is illustrated below:
 
@@ -74,8 +92,36 @@ The PartialMeasure class is for use where a sam:Specimen samples more than one m
 
 **In range of** [partialMeasure](#partialmeasure-1)
 
+### Precision
+Precision
+
+**Sub-class of** [UnrangedLimitsOfDetection](#unrangedlimitsofdetection)
+
 ### Quality
 The Quality class retains information about the Process such as Limits of Detection; Uncertainity; Accuracy and Precision
+
+### RangedLimitsOfDetection
+The RangedLimitsOfDetection class is used to describe those limits of detection which have both a maximum and minimum value associated with them, such as [OperatingRange](#operatingrange). Taking OperatingRange as an example, the RangedLimitsOfDetection would be encoded thus:
+```turtle
+<_:anOperatingRange> a proc:OperatingRange;
+	proc:maxiumum <_:aMaximum>;
+	proc:minimum <_:aMinimum>.
+	
+<_:aMaximum> a proc:Maximum;
+	proc:value 12;
+	proc:uom <_:someUnitOfMeasure>.
+	
+<_:aMinimum> a proc:Minimum;
+	proc:value 0;
+	proc:uom <_:someUnitOfMeasure>.
+```
+
+**Sub-class of** [LimitsOfDetection](#limitsofdetection)
+
+### Resolution
+Resolution
+
+**Sub-class of** [UnrangedLimitsOfDetection](#unrangedlimitsofdetection)
 
 ### StandardOperatingProcedure
 The class StandardOperatingProcedure is used to contain a chain of ComplexProcesses which are commonly used together.
@@ -96,6 +142,10 @@ A full chain can be created thus:
 
 **In domain of** [citation](#citation-1) | [finalStage](#finalstage)
 
+### UnrangedLimitsOfDetection
+The UnrangedLimitsOfDetection class is used to describe those limits of detection which have only one value associated with them, such as [Accuracy](#accuracy).
+
+**Sub-class of** [LimitsOfDetection](#limitsofdetection)
 ---
 
 ## Properties

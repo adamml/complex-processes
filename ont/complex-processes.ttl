@@ -91,6 +91,7 @@ proc:uom a rdf:Property;
 	rdfs:comment "The property uom links an instance to a resource defining its units of measure"@en;
 	rdfs:domain proc:PartialMeasure;
 	rdfs:domain proc:Uncertainty;
+	rdfs:domain proc:UnrangedLimitsOfDetection;
 	rdfs:range rdfs:Resource.
 	
 cpm:ObservableProperty a rdfs:Class;
@@ -113,12 +114,6 @@ proc:term a rdf:Property;
 	rdfs:label "term"@en;
 	rdfs:comment "Links a proc:Uncertainty to an rdf:resource (such as a skos:Concept) describing the type of uncertainty recorded (e.g. Accuracy; Limit of Detection)"@en;
 	rdfs:domain proc:Uncertainity;
-	rdfs:range rdfs:Literal.
-	
-proc:value a rdf:Property;
-	rdfs:label "value"@en;
-	rdfs:comment "Links a proc:Uncertainty instance to the value of uncertainty for that instance."@en;
-	rdfs:domain proc:Uncertainty;
 	rdfs:range rdfs:Literal.
 
 proc:finalStage a rdf:Property;
@@ -157,6 +152,13 @@ proc:UnrangedLimitsOfDetection a rdfs:Class;
 	rdfs:label "UnrangedLimitsOfDetection"@en;
 	rdfs:subClassOf proc:LimitsOfDetection.
 
+proc:value a rdfs:Property;
+	rdfs:label "value"@en;
+	rdfs:comment "The propety value links an Uncertainty or an UnrangedLimitOfDetection to the value associated with it."@en;
+	rdfs:domain proc:UnrangedLimitsOfDetection;
+	rdfs:domain proc:Uncertainty;
+	rdfs:range rdfs:Literal.
+
 proc:Accuracy a rdfs:Class;
 	rdfs:subClassOf proc:UnrangedLimitsOfDetection;
 	rdfs:label "Accuracy"@en.
@@ -172,3 +174,13 @@ proc:Resolution a rdfs:Class;
 proc:OperatingRange a rdfs:Class;
 	rdfs:subClassOf proc:RangedLimitsOfDetection;
 	rdfs:label "OperatingRange"@en.
+	
+proc:maximum a rdfs:Property;
+	rdfs:label "maximum"@en;
+	rdfs:domain proc:RangedLimitsOfDetection;
+	rdfs:range proc:Maximum.
+	
+proc:minimum a rdfs:Property;
+	rdfs:label "minimum"@en;
+	rdfs:domain proc:RangedLimitsOfDetection;
+	rdfs:range proc:Minimum.
