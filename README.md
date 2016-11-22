@@ -7,6 +7,8 @@ An ontology and associated examples for describing processes for ISO/OGC Obersva
     - [citation](#citation-1) [finalStage](#finalstage) | [matrix](#matrix) | [partialMeasure](#partialmeasure-1) | [size](#size) | [uom](#uom) | [usedInstrument](#usedinstrument)
 - [Namespaces Used](#namespaces-used)
 
+An overview of the classes which make up the ontology and how they are connected is illustrated below.
+
 ![Ontology Class Diagram](./img/Complex Processes.png)
 
 ---
@@ -51,6 +53,10 @@ The Instrument class describes characteristics of the sensor used to generate an
 This is a super-class for describing accuracy, resolution, precision etc...
 
 LimitsOfDetection has two sub-classes: RangedLimitsOfDetection where a minimum and maximum value are to be applied to the limits and UnrangedLimitsOfDetection where only one value is applied to the limit.
+
+The hierarchy of the LimitsOfDetection class and its sub-classes are illustrated below.
+
+![LimitsOfDetection Class Diagram](./img/Complex Processes - LimitsOfDetection.png)
 
 ### ManufacturersCalibration
 The ManufacturersCalibration class describes instrument calibrations undertaken by their manufacturer.
