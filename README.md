@@ -60,7 +60,9 @@ The ManufacturersCalibration class describes instrument calibrations undertaken 
 **Sub-class of** prov:Activity
 
 ### PartialMeasure
-The PartialMeasure class is for use where a sam:Specimen samples more than one matrix (such as air and water in pCO2 measurements.
+The PartialMeasure class is for use where a sam:Specimen samples more than one matrix (such as air and water in pCO2 measurements. The class is illustrated below:
+
+![PartialMeasure Class Diagram](./img/Complex Processes - Partial Measure.png)
 
 **In domain of** [matrix](#matrix) | [size](#size)
 
@@ -85,7 +87,11 @@ The citation property is used to connect a ComplexProcess, Algorithm or Standard
 **Range** [Citation](#citation)
 
 ### finalStage
-The property finalStage is used to connect a StandardOperatingProcedure to the last ComplexProcess used in the chain which makes up the StandardOperatingProcedure. A full chain can be created thus:
+The property finalStage is used to connect a StandardOperatingProcedure to the last ComplexProcess used in the chain which makes up the StandardOperatingProcedure. This is illustrated below:
+
+![Standard Operating Procedure Diagram](./img/Complex Processes - SOPs.png)
+
+A full chain can be created thus:
 ```turtle
 <_:standardOperatingProcedure> a proc:StandardOperatingProcedure;
 	proc:finalStage <_:lastStep>.
