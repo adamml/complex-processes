@@ -80,6 +80,20 @@ The Quality class retains information about the Process such as Limits of Detect
 ### StandardOperatingProcedure
 The class StandardOperatingProcedure is used to contain a chain of ComplexProcesses which are commonly used together.
 
+This is illustrated below:
+
+![Standard Operating Procedure Diagram](./img/Complex Processes - SOPs.png)
+
+A full chain can be created thus:
+```turtle
+<_:standardOperatingProcedure> a proc:StandardOperatingProcedure;
+	proc:finalStage <_:lastStep>.
+	
+<_:lastStep> a proc:ComplexProcess;
+	rdfs:seeAlso <_:registeredProcessDefinition>;
+	prov:wasInformedBy <_:penultimateStep>.
+```
+
 **In domain of** [citation](#citation-1) | [finalStage](#finalstage)
 
 ---
@@ -93,19 +107,7 @@ The citation property is used to connect a ComplexProcess, Algorithm or Standard
 **Range** [Citation](#citation)
 
 ### finalStage
-The property finalStage is used to connect a StandardOperatingProcedure to the last ComplexProcess used in the chain which makes up the StandardOperatingProcedure. This is illustrated below:
-
-![Standard Operating Procedure Diagram](./img/Complex Processes - SOPs.png)
-
-A full chain can be created thus:
-```turtle
-<_:standardOperatingProcedure> a proc:StandardOperatingProcedure;
-	proc:finalStage <_:lastStep>.
-	
-<_:lastStep> a proc:ComplexProcess;
-	rdfs:seeAlso <_:registeredProcessDefinition>;
-	prov:wasInformedBy <_:penultimateStep>.
-```
+The property finalStage is used to connect a StandardOperatingProcedure to the last ComplexProcess used in the chain which makes up the StandardOperatingProcedure. 
 
 **Domain** [StandardOperatingProcedure](#standardoperatingprocedure)
 
@@ -134,9 +136,7 @@ The property size is define how much substance a PartialMeasure represents
 
 **Domain** [PartialMeasure](#partialmeasure)
 
-**Range** [cpm:ObservableProperty](http://purl.org/voc/cpm#ObservableProperty)
-
-**Sub-property of** [skos:related](http://www.w3.org/2004/02/skos/core#related)
+**Range** rdfs:Literal
 
 ### usedInstrument
 Assigns an instrument to an Observation Process
@@ -150,7 +150,7 @@ Assigns an instrument to an Observation Process
 ### uom
 The property uom links an instance to a resource defining its units of measure
 
-**Domain** [PartialMeasure](#partialmeasure) | [Uncertainty](#uncertainty)
+**Domain** [PartialMeasure](#partialmeasure) | [Uncertainty](#uncertainty) | [UnrangedLimitsOfDetection](#unrangedlimitsofdetection)
 
 ---
 
