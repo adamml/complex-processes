@@ -207,5 +207,7 @@ The property uom links an instance to a resource defining its units of measure
 
 ## Namespaces Used
 cpm: http://purl.org/voc/cpm#
+
 prov: http://www.w3.org/ns/prov#
+
 skos: http://www.w3.org/2004/02/skos/core#
